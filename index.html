@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafío Componentes Vue</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+      body {
+        background-image: url("https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png");
+        background-size: cover;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        font-family: "Architects Daughter", cursive;
+      }
+      .arreglo {
+        border: 5px solid green;
+        border-radius: 20px;
+        background-color: rgba(40, 219, 40, 0.205);
+      }
+      .contenedor {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      img {
+        width: 120px;
+        border-radius: 50%;
+        padding: 3rem;
+      }
+
+      h1 {
+        color: rgb(221, 221, 221);
+        padding: 30px;
+      }
+
+      .nombres {
+        color: rgb(40, 219, 40);
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>LISTA DE PER... burp ...SONAJES</h1>
+      <arreglo></arreglo>
+      <!--aqui invocar al componente hijo-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      Vue.component("arreglo", {
+        template: `
+        <div class="arreglo">
+          <div class="contenedor" v-for="(item,index) in personajes" :key="index">
+            <img v-bind:src="item.src">
+            <span class="nombres" v-text="item.nombre"></span>
+          </div>
+        </div>`,
+
+        data() {
+          return {
+            personajes: [
+              {
+                nombre: "Rick Sanchez",
+                src: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+              },
+              {
+                nombre: "Woman Rick",
+                src: "https://rickandmortyapi.com/api/character/avatar/381.jpeg",
+              },
+              {
+                nombre: "Black Rick",
+                src: "https://rickandmortyapi.com/api/character/avatar/48.jpeg",
+              },
+
+              {
+                nombre: "Alien Rick",
+                src: "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+              },
+              {
+                nombre: "Investigator Rick",
+                src: "https://rickandmortyapi.com/api/character/avatar/165.jpeg",
+              },
+            ],
+          };
+        },
+      });
+      new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
